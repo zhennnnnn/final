@@ -1,0 +1,28 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block title %}<title>Django 新增評分</title>{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><a href="">Django 新增評分</a></h1>
+</div>
+<div class="content container">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="post-form">
+            課程名稱：<input type="text" name="title" class="form-control"><br />
+            授課教授：<input type="text" name="teacher" class="form-control"><br />
+            修課學期：<input type="text" name="class_time" class="form-control"><br />
+            評分：<input type="number" name="grade" class="form-control"><br />
+            評語：<textarea name="comment" class="form-control"></textarea><br />
+        </div>
+        <input type="submit" class="btn btn-primary save">
+    </form>
+</div>
+{% endblock %}

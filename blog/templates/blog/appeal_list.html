@@ -1,0 +1,40 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block title %}<title>Django 查看申訴</title>{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><a href="">Django 查看申訴</a></h1>
+</div>
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+            {% for appeal in appeals %}
+            <div class="post">
+                <div class="date">
+                    <p>申訴時間: {{ appeal.created }}</p>
+                </div>
+                <h1>
+                    <p>授課名稱：{{ appeal.name }}</p>
+                </h1>
+                <h3>
+                    <p>申訴狀態：{{ appeal.status }}</p>
+                </h3>
+                <h4>
+                    <p>申訴編號：{{ appeal.number }}</p>
+                </h4>
+
+                <p>選課代碼：{{ appeal.code }}</p>
+                <p>申訴內容：{{ appeal.depiction }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

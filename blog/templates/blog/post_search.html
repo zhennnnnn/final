@@ -1,0 +1,59 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block title %}<title>Django 查看所有評分</title>{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+<div class="page-header">
+    <h1><a href="">Django 搜索</a></h1>
+</div>
+
+
+
+<div class="content container">
+    <div class="row">
+        <div class="col-md">
+            <form method="POST">
+                <div class="input-group" id="adv-search">
+                    {% csrf_token %}
+                    <input name="condition" type="text" class="form-control" placeholder="Search for comment" />
+                    <div class="input-group-btn">
+                        <div class="btn-group" role="group">
+                            <input type="submit" class="btn btn-primary save">
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+            <p></p>
+            <div class="jumbotron">
+                <h3>搜索結果</h3>
+                {% for post in posts %}
+                <div class="post">
+                    <div class="date">
+                        <p>發佈時間: {{ post.published_date }}</p>
+                    </div>
+                    <h1>
+                        <p>課程名稱：{{ post.title }}</p>
+                    </h1>
+                    <p>授課教授：{{ post.teacher }}</p>
+                    <p>修課學期：{{ post.class_time }}</p>
+                    <p>評分：{{ post.grade }}</p>
+                    <p>評語：{{ post.comment }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

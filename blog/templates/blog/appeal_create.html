@@ -1,0 +1,26 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block title %}<title>Django 申訴</title>{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><a href="">Django 申訴</a></h1>
+</div>
+<div class="content container">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="post-form">
+            授課名稱：<input type="text" name="name" class="form-control"><br />
+            申訴課程截圖（請善用　https://imgur.com/）：<input type="number" name="code" class="form-control"><br />
+            申訴內容：<textarea name="depiction" class="form-control"></textarea><br />
+        </div>
+        <input type="submit" class="btn btn-primary save">
+    </form>
+</div>
+{% endblock %}

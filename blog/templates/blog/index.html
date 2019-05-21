@@ -1,0 +1,41 @@
+{% extends "blog/base.html" %}
+{% load staticfiles %}
+{% block title %}<title>教授評分系統</title>{% endblock %}
+
+{% block link %}
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1><a href="">Django 首頁</a></h1>
+</div>
+<div class="content container">
+
+    <div class="topfunction">
+        <a href="/crawler/" title="獲取最新資訊">獲取最新資訊</a>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>標題</th>
+                <th>作者</th>
+                <th>連結網址</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for un in unit %}
+            <tr>
+                <td><a href="/detail/{{un.id}}">{{un.cTitle}}</a></td>
+                <td>{{un.cAuthor}}</td>
+                <td><a href="{{un.cLink}}">巴哈姆特討論串</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}
